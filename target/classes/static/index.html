@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RideSync - Premium Cab Booking & Dispatch System">
+    <title>RideSync</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar glass-panel-nav">
+        <div class="nav-brand" onclick="showSection('home-section')">RideSync</div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('home-section')">Home</a>
+            <a href="#" onclick="showSection('about-section')">About Us</a>
+            <a href="#" onclick="showSection('safety-section')">Safety</a>
+            <a href="#" onclick="showSection('career-section')">Careers</a>
+            <a href="#" onclick="showSection('blog-section')">Blog</a>
+            <a href="#" onclick="showSection('press-section')">Press</a>
+            <a href="#" onclick="showSection('contact-section')">Contact</a>
+        </div>
+        <div class="nav-auth">
+            <button class="btn secondary-btn" id="nav-login-btn" onclick="showSection('auth-section')">Login / Register</button>
+            <button class="btn logout-btn" id="nav-logout-btn" style="display: none;" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- Home Section -->
+        <section id="home-section" class="page-section active-section">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Go anywhere with RideSync</h1>
+                <p class="hero-subtitle">Request a ride, hop in, and go.</p>
+                <button class="btn primary-btn hero-btn" onclick="showSection('auth-section')">Get Started</button>
+            </div>
+            
+            <div class="services-section mt-3">
+                <h2 class="text-center" style="margin-bottom: 2rem;">What We Offer</h2>
+                <div class="blog-grid">
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚕</div>
+                        <h3>Cab & Taxi</h3>
+                        <p>Comfortable rides for your everyday commute.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🏍️</div>
+                        <h3>Bike</h3>
+                        <p>Beat the traffic with quick and affordable bike rides.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚙</div>
+                        <h3>Premium Cab</h3>
+                        <p>Top-rated drivers and luxury cars for special occasions.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎫</div>
+                        <h3>Metro Ticket</h3>
+                        <p>Book metro tickets instantly and skip the queues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-section" class="page-section glass-panel" style="display: none;">
+            <h2>About Us</h2>
+            <p>RideSync is a modern transportation technology company dedicated to connecting riders with reliable drivers. Founded in 2026, our mission is to make urban mobility seamless, safe, and accessible to everyone.</p>
+        </section>
+
+        <!-- Safety Section -->
+        <section id="safety-section" class="page-section glass-panel" style="display: none;">
+            <h2>Your Safety First</h2>
+            <p>We are committed to your safety. Every RideSync driver undergoes a rigorous background check and vehicle inspection. Our app features 24/7 support, ride tracking, and an emergency assistance button so you can ride with peace of mind.</p>
+        </section>
+
+        <!-- Career Section -->
+        <section id="career-section" class="page-section glass-panel" style="display: none;">
+            <h2>Careers at RideSync</h2>
+            <p>Join our mission to revolutionize transportation. We are always looking for talented engineers, designers, and operators to join our global team. Check out our open positions and help us build the future of mobility.</p>
+            <button class="btn secondary-btn mt-3">View Open Positions</button>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog-section" class="page-section glass-panel" style="display: none;">
+            <h2>RideSync Blog</h2>
+            <div class="blog-grid">
+                <div class="card mb-2">
+                    <h3>Introducing RideSync Green</h3>
+                    <p>Our commitment to a zero-emission future starts today.</p>
+                </div>
+                <div class="card mb-2">
+                    <h3>Tips for a 5-Star Ride</h3>
+                    <p>How to make the most of your RideSync experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Section -->
+        <section id="press-section" class="page-section glass-panel" style="display: none;">
+            <h2>Press & Media</h2>
+            <p>For press inquiries, media assets, and our latest press releases, please contact our PR team.</p>
+            <p class="mt-3"><strong>Latest Release:</strong> RideSync expands to 50 new cities globally.</p>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-section" class="page-section glass-panel" style="display: none;">
+            <h2>Contact Us</h2>
+            <form id="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" required placeholder="Your Name">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="you@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Message</label>
+                    <textarea required placeholder="How can we help you?" rows="4" style="width: 100%; padding: 12px; border-radius: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); color: white; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn primary-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Auth Section -->
+        <section id="auth-section" class="page-section glass-panel" style="display: none; max-width: 500px; margin: 0 auto;">
+            <h2 class="logo text-center" style="margin-bottom: 2rem;">RideSync Login</h2>
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchAuthTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn primary-btn">Login to Dashboard</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" style="display: none;">
+                <div class="input-group">
+                    <label>Role</label>
+                    <select id="register-role" onchange="toggleLicenseField()">
+                        <option value="ROLE_RIDER">Rider</option>
+                        <option value="ROLE_DRIVER">Driver</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="register-name" required placeholder="John Doe">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="register-email" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="text" id="register-phone" required placeholder="555-1234">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="register-password" required placeholder="••••••••">
+                </div>
+                <div class="input-group" id="license-group" style="display: none;">
+                    <label>License Number</label>
+                    <input type="text" id="register-license" placeholder="DL-12345">
+                </div>
+                <button type="submit" class="btn primary-btn">Create Account</button>
+            </form>
+            <p id="auth-error" class="error-msg text-center"></p>
+        </section>
+
+        <!-- Rider Dashboard -->
+        <section id="rider-section" class="page-section glass-panel" style="display: none; max-width: 600px; margin: 0 auto;">
+            <div class="header">
+                <h2>Rider Dashboard</h2>
+            </div>
+            
+            <div class="card">
+                <h3>Request a Ride</h3>
+                <form id="ride-request-form">
+                    <div class="input-group">
+                        <label>Select Service</label>
+                        <select id="ride-service-type" required>
+                            <option value="CAB">Cab</option>
+                            <option value="TAXI">Taxi</option>
+                            <option value="BIKE">Bike</option>
+                            <option value="METRO">Metro Ticket</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Pickup Location</label>
+                        <input type="text" id="pickup-location" placeholder="Enter pickup location (e.g. Times Square)" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Dropoff Location</label>
+                        <input type="text" id="dropoff-location" placeholder="Enter dropoff location (e.g. Central Park)" required>
+                    </div>
+                    
+                    <button type="submit" class="btn primary-btn">Find a Driver</button>
+                </form>
+            </div>
+
+            <div class="card" id="rider-active-ride" style="display: none;">
+                <h3>Active Ride <span class="badge" id="rider-ride-status"></span></h3>
+                <div class="ride-details">
+                    <p><strong>Driver:</strong> <span id="rider-driver-name">Waiting...</span></p>
+                    <p><strong>Fare:</strong> $<span id="rider-fare">0.00</span></p>
+                    <p><strong>Distance:</strong> <span id="rider-distance">0.00</span> km</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Driver Dashboard -->
+        <section id="driver-section" class="page-section glass-panel" style="display: none; max-width: 600px; margin: 0 auto;">
+            <div class="header">
+                <h2>Driver Dashboard</h2>
+            </div>
+
+            <div class="card">
+                <h3>Status</h3>
+                <div class="toggle-group">
+                    <label class="switch">
+                        <input type="checkbox" id="driver-available-toggle" onchange="updateDriverLocation()">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Available for rides</span>
+                </div>
+                <div class="row mt-3">
+                    <div class="input-group">
+                        <label>Current Lat</label>
+                        <input type="number" step="any" id="driver-lat" value="40.7128">
+                    </div>
+                    <div class="input-group">
+                        <label>Current Lng</label>
+                        <input type="number" step="any" id="driver-lng" value="-74.0060">
+                    </div>
+                </div>
+                <button class="btn secondary-btn" onclick="updateDriverLocation()">Update Location</button>
+            </div>
+
+            <div class="card" id="driver-active-ride" style="display: none;">
+                <h3>Incoming Ride <span class="badge" id="driver-ride-status"></span></h3>
+                <div class="ride-details">
+                    <p><strong>Rider:</strong> <span id="driver-rider-name"></span></p>
+                    <p><strong>Fare:</strong> $<span id="driver-fare">0.00</span></p>
+                </div>
+                <div class="action-buttons mt-3" id="driver-ride-actions">
+                    <button class="btn success-btn" onclick="updateRideStatus('ACCEPTED')">Accept</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SockJS and Stomp -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: ridesync-backend
+
+  # Use H2 by default for easy local running without MySQL setup
+  # Uncomment the MySQL block to use it instead
+  datasource:
+    url: jdbc:h2:mem:ridesyncdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # MySQL Configuration (Uncomment when MySQL is ready)
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/ridesync?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  #   username: root
+  #   password: root
+  #   driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    # database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    # 256-bit secret key (32 bytes base64 encoded)
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 86400000 # 24 hours
